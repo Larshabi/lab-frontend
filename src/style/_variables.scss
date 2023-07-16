@@ -1,5 +1,5 @@
 $text-color: #fff;
-$primaryColor: #1a1a1a;
+$primaryColor: #407bff;
 
 * {
   margin: 0;
@@ -9,9 +9,7 @@ $primaryColor: #1a1a1a;
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: "Inter", "Roboto", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -21,41 +19,11 @@ code {
     monospace;
 }
 
-.app {
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  /* justify-content: center; */
-  /* align-items: center; */
+.text-blue {
+  color: #407bff;
 }
 
-.auth-form {
-  width: 100%;
-}
-.ant-modal {
-  border-radius: 0%;
-
-  .ant-modal-content {
-    border-radius: 0%;
-  }
-}
-
-.navbar {
-  width: 100vw;
-  padding: 1rem 1rem;
-}
-
-.menu-nav {
-  border: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.navbar-brand {
-  font-weight: 700;
-  font-size: 20px;
-}
-.flex {
-  display: flex;
+.container {
+  max-width: 1220px;
+  margin: auto;
 }

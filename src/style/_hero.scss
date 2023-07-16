@@ -1,0 +1,32 @@
+.hero {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-top: 7rem;
+  gap: 3rem;
+  //   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
+  &_content {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    gap: 1rem;
+
+    &-title {
+      color: var(--gray-gray-800, #1e293b);
+      font-size: 48px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+      //   text-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+      text-shadow: 1px 3px 2px rgba(0, 0, 0, 0.25);
+    }
+    &_img {
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+}

@@ -1,5 +1,7 @@
+import Home from "../Pages/Homepage/Home";
+
 const routes = [
-  // { path: "/login", index: true, element: <Login /> },
+  { path: "/", index: true, element: <Home /> },
   // {
   //   path: "/",
   //   element: <HomeLayout />,
