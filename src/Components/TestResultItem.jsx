@@ -1,5 +1,7 @@
 import { Button } from "@chakra-ui/react";
 import React from "react";
+import { MdLocationPin } from "react-icons/md";
+import { BsFillTelephoneFill } from "react-icons/bs";
 
 const TestResultItem = () => {
   return (
@@ -13,8 +15,18 @@ const TestResultItem = () => {
           <p>DelRio Laboratories</p>
         </div>
         <div className="testresult-details_contact">
-          <p>120 Carlanna Lake Road, Ketchikan, AK 99901-5611</p>
-          <p>0800000000</p>
+          <p className="mb-5">
+            <span>
+              <MdLocationPin />
+            </span>
+            120 Carlanna Lake Road, Ketchikan, AK 99901-5611
+          </p>
+          <p>
+            <span>
+              <BsFillTelephoneFill />
+            </span>
+            0800000000
+          </p>
         </div>
       </div>
       <div className="testresult-price">

@@ -29,6 +29,10 @@ code {
 }
 
 .back_btn {
-  color: $primaryColor;
+  color: var(--gray-gray-700, #334155);
   cursor: pointer;
+
+  &:hover {
+    color: $primaryColor;
+  }
 }

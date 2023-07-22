@@ -12,15 +12,17 @@ const SearchResults = () => {
 
   return (
     <div className="search">
-      <BackButton />
+      <div>
+        <BackButton />
+      </div>
 
       <div className="search_container">
-        <div>
-          <div>
+        <div className="blood-results_left">
+          <div className="header">
             <h3>Blood Test</h3>
             <p>20 results</p>
           </div>
-          <div>
+          <div className="body">
             <p>Make another search</p>
             <Form onFinish={onFinish}>
               <Form.Item name={"searchTest"}>
@@ -34,11 +36,11 @@ const SearchResults = () => {
             </Form>
           </div>
         </div>
-        <div>
-          <div>
+        <div className="blood-results-right">
+          <div className="header">
             <p>Search Results</p>
           </div>
-          <div>
+          <div className="body">
             <TestResultItem />
           </div>
         </div>

@@ -6,7 +6,7 @@ const BackButton = () => {
   const navigate = useNavigate();
   return (
     <div onClick={() => navigate(-1)} className="back_btn">
-      <ArrowLeftOutlined /> Go Back
+      <ArrowLeftOutlined className="text-blue" /> Go Back
     </div>
   );
 };
