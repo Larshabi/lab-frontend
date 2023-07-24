@@ -1,10 +1,10 @@
-import { Button } from "@chakra-ui/react";
+import { Button } from "antd";
 import React from "react";
-import { MdLocationPin } from "react-icons/md";
 import { BsFillTelephoneFill } from "react-icons/bs";
-import png from "../assets/Rectangle 14 (1).png";
+import { MdLocationPin } from "react-icons/md";
+import png from "../assets/Rectangle 14.png";
 
-const TestResultItem = () => {
+const LocationResultsItem = () => {
   return (
     <div className="testresult">
       <div className="testresult-img">
@@ -12,8 +12,7 @@ const TestResultItem = () => {
       </div>
       <div className="testresult-details">
         <div className="testresult-details_title">
-          <h3>Complete Blood Count (CBC)</h3>
-          <p>DelRio Laboratories</p>
+          <h3>Quest Diagnostics</h3>
         </div>
         <div className="testresult-details_contact">
           <p className="mb-5">
@@ -22,16 +21,24 @@ const TestResultItem = () => {
             </span>
             120 Carlanna Lake Road, Ketchikan, AK 99901-5611
           </p>
-          <p>
+          <p className="mb-5">
             <span>
               <BsFillTelephoneFill />
             </span>
-            0800000000
+            Quest Diagnostics
+          </p>
+          <p className="mb-5">
+            <span>
+              <BsFillTelephoneFill />
+            </span>
+            Mondays - Fridays, 8AM - 5PM
           </p>
         </div>
       </div>
       <div className="testresult-price">
-        <p>#20,000</p>
+        <Button backgroundColor={"#407BFF"} color={"white"}>
+          View Tests
+        </Button>
         <Button backgroundColor={"#407BFF"} color={"white"}>
           View Laboratory
         </Button>
@@ -40,4 +47,4 @@ const TestResultItem = () => {
   );
 };
 
-export default TestResultItem;
+export default LocationResultsItem;

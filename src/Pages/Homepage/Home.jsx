@@ -1,7 +1,8 @@
 import { Button, FormControl } from "@chakra-ui/react";
-import { Form, Input } from "antd";
+import { Col, Form, Input, Row, Select } from "antd";
 import React from "react";
 import heroImg from "../../assets/Location search-rafiki 1.png";
+import { Option } from "antd/es/mentions";
 
 const Home = () => {
   return (
@@ -19,9 +20,27 @@ const Home = () => {
           <p>Find a laboratory</p>
           <FormControl>
             <Form>
-              <Form.Item>
-                <Input placeholder="Search by laboratory name, location or test name" />
-              </Form.Item>
+              <Row gutter={4}>
+                <Col span={17}>
+                  <Form.Item>
+                    <Input placeholder="Search by laboratory name, location or test name" />
+                  </Form.Item>
+                </Col>
+                <Col span={7}>
+                  <Form.Item>
+                    <Select
+                      // style={{
+                      //   width: 120,
+                      // }}
+                      placeholder="Search by laboratory name, location or test name"
+                    >
+                      <Option value="location">Location</Option>
+                      <Option value="tests">Tests</Option>
+                      <Option value="labName">Name of laboratory</Option>
+                    </Select>
+                  </Form.Item>
+                </Col>
+              </Row>
               <Button backgroundColor={"#407BFF"} color={"white"}>
                 Find Laboratory
               </Button>

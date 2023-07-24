@@ -4,6 +4,7 @@ import TestResultItem from "../Components/TestResultItem";
 import { Form } from "antd";
 import { Input, InputGroup, InputLeftElement } from "@chakra-ui/react";
 import { FiSearch } from "react-icons/fi";
+import LocationResultsItem from "../Components/LocationResultsItem";
 
 const SearchResults = () => {
   const onFinish = (value) => {
@@ -42,6 +43,7 @@ const SearchResults = () => {
           </div>
           <div className="body">
             <TestResultItem />
+            <LocationResultsItem />
           </div>
         </div>
       </div>
