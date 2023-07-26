@@ -5,26 +5,14 @@ import { Form } from "antd";
 import { Input, InputGroup, InputLeftElement } from "@chakra-ui/react";
 import { FiSearch } from "react-icons/fi";
 import LocationResultsItem from "../Components/LocationResultsItem";
-import { useLocation } from "react-router-dom";
-import { useSearchQuery } from "../app/services/labApi";
-import TestItem from "../Components/TestItem";
+import { useLocation, useParams } from "react-router-dom";
+import { useGetTestDetailQuery, useSearchQuery } from "../app/services/labApi";
 
-const SearchResults = () => {
-  const { searchValue, category } = useLocation().state;
-  const { data, isLoading } = useSearchQuery({ q: searchValue });
+const TestDetailPage = ({}) => {
+  const { id } = useParams();
+  const { data, isLoading } = useGetTestDetailQuery(id);
+
   console.log(data);
-  console.log(category);
-
-  let newArr;
-  if (data) {
-    newArr = data
-      .map((item) => {
-        return item.prices;
-      })
-      .flat()
-      .filter((item) => item?.laboratory?.city.toLowerCase() === "ife");
-    console.log(newArr);
-  }
 
   const onFinish = (value) => {
     console.log(value);
@@ -39,8 +27,10 @@ const SearchResults = () => {
       <div className="search_container">
         <div className="blood-results_left">
           <div className="header">
-            <h3 className=" capitalize">{`${searchValue} Test`}</h3>
-            <p>{data?.length} results</p>
+            <h3 className=" capitalize">{`{
+
+            } Test`}</h3>
+            {/* <p>{data.length} results</p> */}
           </div>
           <div className="body">
             <p>Make another search</p>
@@ -61,11 +51,11 @@ const SearchResults = () => {
             <p>Search Results</p>
           </div>
           <div className="body">
-            {category === "tests" &&
-              data?.map((test) => <TestItem data={test} />)}
+            {data?.prices?.map((test) => (
+              <TestResultItem data={test} key={data?.id} />
+            ))}
 
-            {category === "location" &&
-              newArr?.map((test) => <LocationResultsItem data={test} />)}
+            {/* <LocationResultsItem /> */}
           </div>
         </div>
       </div>
@@ -73,4 +63,4 @@ const SearchResults = () => {
   );
 };
 
-export default SearchResults;
+export default TestDetailPage;
