@@ -5,26 +5,28 @@ import { Form } from "antd";
 import { Input, InputGroup, InputLeftElement } from "@chakra-ui/react";
 import { FiSearch } from "react-icons/fi";
 import LocationResultsItem from "../Components/LocationResultsItem";
-import { useLocation } from "react-router-dom";
-import { useSearchQuery } from "../app/services/labApi";
+import { useLocation, useParams } from "react-router-dom";
+import {
+  useGetLaboratoryTestsQuery,
+  useSearchQuery,
+} from "../app/services/labApi";
 import TestItem from "../Components/TestItem";
 
-const SearchResults = () => {
-  const { searchValue, category } = useLocation().state;
-  const { data, isLoading } = useSearchQuery({ q: searchValue });
+const LocationResults = () => {
+  const { id } = useParams();
+  const { data, isLoading } = useGetLaboratoryTestsQuery(id);
   console.log(data);
-  console.log(category);
 
-  let newArr;
-  if (data) {
-    newArr = data
-      .map((item) => {
-        return item.prices;
-      })
-      .flat()
-      .filter((item) => item?.laboratory?.city.toLowerCase() === "ife");
-    console.log(newArr);
-  }
+  //   let newArr;
+  //   if (data) {
+  //     newArr = data
+  //       .map((item) => {
+  //         return item.prices;
+  //       })
+  //       .flat()
+  //       .filter((item) => item?.laboratory?.city.toLowerCase() === "ife");
+  //     console.log(newArr);
+  //   }
 
   const onFinish = (value) => {
     console.log(value);
@@ -39,7 +41,7 @@ const SearchResults = () => {
       <div className="search_container">
         <div className="blood-results_left">
           <div className="header">
-            <h3 className=" capitalize">{`${searchValue} Test`}</h3>
+            {/* <h3 className=" capitalize">{`${searchValue} Test`}</h3> */}
             <p>{data?.length} results</p>
           </div>
           <div className="body">
@@ -58,14 +60,14 @@ const SearchResults = () => {
         </div>
         <div className="blood-results-right">
           <div className="header">
-            <p>Search Results</p>
+            <p className="font-bold">
+              {!isLoading && data[0]?.prices[0]?.laboratory?.name}
+            </p>
           </div>
           <div className="body">
-            {category === "tests" &&
-              data?.map((test) => <TestItem data={test} />)}
-
-            {category === "location" &&
-              newArr?.map((test) => <LocationResultsItem data={test} />)}
+            {data?.map((test) => (
+              <TestItem data={test} />
+            ))}
           </div>
         </div>
       </div>
@@ -73,4 +75,4 @@ const SearchResults = () => {
   );
 };
 
-export default SearchResults;
+export default LocationResults;
