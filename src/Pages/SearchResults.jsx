@@ -1,7 +1,7 @@
 import React from "react";
 import BackButton from "../Components/BackButton";
 import TestResultItem from "../Components/TestResultItem";
-import { Form } from "antd";
+import { Empty, Form } from "antd";
 import { Input, InputGroup, InputLeftElement } from "@chakra-ui/react";
 import { FiSearch } from "react-icons/fi";
 import LocationResultsItem from "../Components/LocationResultsItem";
@@ -63,8 +63,8 @@ const SearchResults = () => {
           <div className="body">
             {category === "tests" &&
               data?.map((test) => <TestItem data={test} />)}
-
-            {category === "location" &&
+            {category && (!data || !data.length) && <Empty />}
+            {(category === "location" || category === "labName") &&
               newArr?.map((test) => <LocationResultsItem data={test} />)}
           </div>
         </div>

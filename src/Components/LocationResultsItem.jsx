@@ -7,7 +7,6 @@ import { useNavigate } from "react-router-dom";
 
 const LocationResultsItem = ({ data }) => {
   const navigate = useNavigate();
-  console.log(data);
   return (
     <div className="testresult">
       <div className="testresult-img">
@@ -37,7 +36,13 @@ const LocationResultsItem = ({ data }) => {
           backgroundColor={"#407BFF"}
           color={"white"}
           onClick={() =>
-            navigate(`/location/tests/${data?.laboratory?.id || data?.id}`)
+            navigate(`/location/tests/${data?.laboratory?.id || data?.id}`, {
+              state: {
+                name: data?.laboratory?.name || data?.name,
+                lat: data?.laboratory?.latitude || data?.latitude,
+                lng: data?.laboratory?.longitude || data.longitude,
+              },
+            })
           }
         >
           View Tests

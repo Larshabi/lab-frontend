@@ -1,7 +1,7 @@
 import React from "react";
 import BackButton from "../Components/BackButton";
 import TestResultItem from "../Components/TestResultItem";
-import { Form } from "antd";
+import { Empty, Form } from "antd";
 import { Input, InputGroup, InputLeftElement } from "@chakra-ui/react";
 import { FiSearch } from "react-icons/fi";
 import LocationResultsItem from "../Components/LocationResultsItem";
@@ -49,9 +49,13 @@ const TestDetailPage = ({}) => {
             <p>Search Results</p>
           </div>
           <div className="body">
-            {data?.prices?.map((test) => (
-              <TestResultItem data={test} key={data?.id} />
-            ))}
+            {!data ? (
+              <Empty />
+            ) : (
+              data?.prices?.map((test) => (
+                <TestResultItem data={test} key={data?.id} />
+              ))
+            )}
 
             {/* <LocationResultsItem /> */}
           </div>

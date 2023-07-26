@@ -1,6 +1,6 @@
 .search {
   width: 100%;
-  margin-top: 7rem;
+  margin-top: 4rem;
   gap: 3rem;
 
   & > div {
@@ -76,6 +76,7 @@
   justify-content: space-between;
   margin: 1rem 0;
   padding: 1rem;
+  background-color: #f5f6f8;
 
   &:hover {
     background-color: #cfd9e8;

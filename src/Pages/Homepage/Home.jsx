@@ -10,7 +10,7 @@ const Home = () => {
   console.log("object");
   const onfinish = (values) => {
     console.log(values);
-    if (values.category === "location") {
+    if (values.category === "location" || values.category === "labName") {
       navigate("/location", { state: values });
     } else if (values.category === "testName") {
       navigate("/lab/tests", { state: values });
