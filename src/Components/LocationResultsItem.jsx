@@ -47,7 +47,9 @@ const LocationResultsItem = ({ data }) => {
           color={"white"}
           onClick={() =>
             window.open(
-              `https://www.google.com/maps/dir/?api=1&destination=${data?.laboratory?.latitude},${data?.laboratory?.longitude}`
+              `https://www.google.com/maps/dir/?api=1&destination=${
+                data?.laboratory?.latitude || data?.latitude
+              },${data?.laboratory?.longitude || data.longitude}`
             )
           }
         >
