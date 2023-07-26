@@ -1,35 +1,23 @@
 import React from "react";
 import BackButton from "../Components/BackButton";
-import TestResultItem from "../Components/TestResultItem";
 import { Form } from "antd";
 import { Input, InputGroup, InputLeftElement } from "@chakra-ui/react";
 import { FiSearch } from "react-icons/fi";
 import LocationResultsItem from "../Components/LocationResultsItem";
 import { useLocation } from "react-router-dom";
-import { useSearchQuery } from "../app/services/labApi";
+import { useLocationSearchQuery } from "../app/services/labApi";
 import TestItem from "../Components/TestItem";
 
-const SearchResults = () => {
+const LaboratorySearchResultsPage = () => {
   const { searchValue, category } = useLocation().state;
-  const { data, isLoading } = useSearchQuery({ q: searchValue });
-  console.log(data);
-  console.log(category);
 
-  let newArr;
-  if (data) {
-    newArr = data
-      .map((item) => {
-        return item.prices;
-      })
-      .flat()
-      .filter((item) => item?.laboratory?.city.toLowerCase() === "ife");
-    console.log(newArr);
-  }
+  const { data } = useLocationSearchQuery({ q: searchValue });
+
+  console.log(data);
 
   const onFinish = (value) => {
     console.log(value);
   };
-
   return (
     <div className="search">
       <div>
@@ -65,7 +53,7 @@ const SearchResults = () => {
               data?.map((test) => <TestItem data={test} />)}
 
             {category === "location" &&
-              newArr?.map((test) => <LocationResultsItem data={test} />)}
+              data?.map((test) => <LocationResultsItem data={test} />)}
           </div>
         </div>
       </div>
@@ -73,4 +61,4 @@ const SearchResults = () => {
   );
 };
 
-export default SearchResults;
+export default LaboratorySearchResultsPage;

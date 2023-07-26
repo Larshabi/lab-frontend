@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { notification } from "antd";
 // import { logoutUser } from "../app/features/authSlice";
 
-const baseUrl = "http://localhost:8000/api";
+const baseUrl = "http://localhost:8080/lab";
 
 const baseQuery = fetchBaseQuery({
   baseUrl: baseUrl,
@@ -21,19 +21,6 @@ const baseQueryRequest = async (args, api, extraOptions) => {
   const response = await baseQuery(args, api, extraOptions);
 
   console.log(response);
-
-  if (response.error && response.error.status === 307) {
-    // api.dispatch(logoutUser());
-    return notification.error({
-      message: "Session has expired",
-    });
-  }
-  if (response.error && response.error.status === 403) {
-    // api.dispatch(logoutUser());
-    return notification.error({
-      message: response.error.error,
-    });
-  }
   if (response.error) {
     return notification.error({
       message: response.error.data.message || "",
