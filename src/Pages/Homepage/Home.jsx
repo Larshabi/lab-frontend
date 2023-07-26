@@ -32,10 +32,11 @@ const Home = () => {
                       // style={{
                       //   width: 120,
                       // }}
-                      placeholder="Search by laboratory name, location or test name"
+                      placeholder="Search by laboratory name, city or test name"
                     >
-                      <Option value="location">Location</Option>
-                      <Option value="tests">Tests</Option>
+                      <Option value="city">City</Option>
+                      <Option value="test_name">Test Name</Option>
+                      <Option value="test_category">Test Category</Option>
                       <Option value="labName">Name of laboratory</Option>
                     </Select>
                   </Form.Item>
