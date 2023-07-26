@@ -15,14 +15,14 @@ const LocationResultsItem = ({ data }) => {
       </div>
       <div className="testresult-details">
         <div className="testresult-details_title">
-          <h3>{data?.laboratory?.name}</h3>
+          <h3>{data?.laboratory?.name || data?.name}</h3>
         </div>
         <div className="testresult-details_contact">
           <p className="mb-5">
             <span>
               <MdLocationPin />
             </span>
-            {data?.laboratory?.address}
+            {data?.laboratory?.address || data?.address}
           </p>
           <p className="mb-5">
             <span>
@@ -36,12 +36,22 @@ const LocationResultsItem = ({ data }) => {
         <Button
           backgroundColor={"#407BFF"}
           color={"white"}
-          onClick={() => navigate(`/location/tests/${data?.laboratory?.id}`)}
+          onClick={() =>
+            navigate(`/location/tests/${data?.laboratory?.id || data?.id}`)
+          }
         >
           View Tests
         </Button>
-        <Button backgroundColor={"#407BFF"} color={"white"}>
-          View Laboratory
+        <Button
+          backgroundColor={"#407BFF"}
+          color={"white"}
+          onClick={() =>
+            window.open(
+              `https://www.google.com/maps/dir/?api=1&destination=${data?.laboratory?.latitude},${data?.laboratory?.longitude}`
+            )
+          }
+        >
+          Get Directions
         </Button>
       </div>
     </div>

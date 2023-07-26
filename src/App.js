@@ -9,7 +9,7 @@ function App() {
   return (
     <ChakraProvider>
       <div className="app container">
-        <Navbar />
+        {/* <Navbar /> */}
         <RouterProvider router={router} />
       </div>
     </ChakraProvider>

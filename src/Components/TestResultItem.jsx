@@ -5,6 +5,8 @@ import { BsFillTelephoneFill } from "react-icons/bs";
 import png from "../assets/Rectangle 14 (1).png";
 
 const TestResultItem = ({ data }) => {
+  console.log(data);
+
   return (
     <div className="testresult px-4">
       <div className="testresult-img">

@@ -8,9 +8,11 @@ import LocationResultsItem from "../Components/LocationResultsItem";
 import { useLocation, useParams } from "react-router-dom";
 import { useGetTestDetailQuery, useSearchQuery } from "../app/services/labApi";
 
-const TestDetailPage = ({}) => {
-  const { id } = useParams();
-  const { data, isLoading } = useGetTestDetailQuery(id);
+const TestNamePage = ({}) => {
+  const { searchValue, category } = useLocation().state;
+  const { data, isLoading } = useSearchQuery({ q: searchValue });
+  console.log(data);
+  console.log(category);
 
   console.log(data);
 
@@ -27,7 +29,8 @@ const TestDetailPage = ({}) => {
       <div className="search_container">
         <div className="blood-results_left">
           <div className="header">
-            <h3 className=" capitalize">{`${data?.name || ""} Test`}</h3>
+            {/* <h3 className=" capitalize">{`${
+            } Test`}</h3> */}
             {/* <p>{data.length} results</p> */}
           </div>
           <div className="body">
@@ -49,9 +52,14 @@ const TestDetailPage = ({}) => {
             <p>Search Results</p>
           </div>
           <div className="body">
-            {data?.prices?.map((test) => (
-              <TestResultItem data={test} key={data?.id} />
-            ))}
+            {data?.map((test) =>
+              test.prices.map((testItem) => (
+                <TestResultItem
+                  data={testItem}
+                  key={testItem?.laboratory?.id}
+                />
+              ))
+            )}
 
             {/* <LocationResultsItem /> */}
           </div>
@@ -61,4 +69,4 @@ const TestDetailPage = ({}) => {
   );
 };
 
-export default TestDetailPage;
+export default TestNamePage;

@@ -10,7 +10,13 @@ const Home = () => {
   console.log("object");
   const onfinish = (values) => {
     console.log(values);
-    navigate("/search", { state: values });
+    if (values.category === "location") {
+      navigate("/location", { state: values });
+    } else if (values.category === "testName") {
+      navigate("/lab/tests", { state: values });
+    } else {
+      navigate("/search", { state: values });
+    }
   };
 
   return (
@@ -45,7 +51,7 @@ const Home = () => {
                       <Option value="location">City</Option>
                       <Option value="tests">Test Category</Option>
                       <Option value="labName">Name of laboratory</Option>
-                      <Option value="labName">Test Name</Option>
+                      <Option value="testName">Test Name</Option>
                     </Select>
                   </Form.Item>
                 </Col>

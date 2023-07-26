@@ -5,6 +5,13 @@ const labApi = apiSlice.injectEndpoints({
     search: builder.query({
       query: (body) => ({ url: "tests/search/", method: "get", params: body }),
     }),
+    locationSearch: builder.query({
+      query: (body) => ({
+        url: "/search",
+        method: "get",
+        params: body,
+      }),
+    }),
     getTestDetail: builder.query({
       query: (id) => ({ url: `tests/${id}`, method: "get" }),
     }),
@@ -18,4 +25,7 @@ export const {
   useSearchQuery,
   useGetTestDetailQuery,
   useGetLaboratoryTestsQuery,
+  useLocationSearchQuery,
 } = labApi;
+
+// localhost:8080/lab/search/?q=Ife
