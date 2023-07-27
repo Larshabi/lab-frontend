@@ -39,7 +39,7 @@ const SearchResults = () => {
       <div className="search_container">
         <div className="blood-results_left">
           <div className="header">
-            <h3 className=" capitalize">{`${searchValue} Test`}</h3>
+            <h3 className=" capitalize">{`${searchValue}`}</h3>
             <p>{data?.length} results</p>
           </div>
           <div className="body">

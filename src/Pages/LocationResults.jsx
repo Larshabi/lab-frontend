@@ -2,7 +2,7 @@ import React from "react";
 import BackButton from "../Components/BackButton";
 import { Empty } from "antd";
 import { Button } from "@chakra-ui/react";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation, useParams, Link } from "react-router-dom";
 import { useGetLaboratoryTestsQuery } from "../app/services/labApi";
 import TestItem from "../Components/TestItem";
 import {
@@ -25,7 +25,7 @@ const center = {
 const LocationResults = () => {
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
-    googleMapsApiKey: process.env.googleMapsApiKey
+    googleMapsApiKey: process.env.REACT_APP_GOOGLEMAPSAPIKEY
   });
 
   const [map, setMap] = React.useState(null);
