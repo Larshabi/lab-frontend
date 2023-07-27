@@ -37,7 +37,11 @@ const LocationResultsItem = ({ data }) => {
           color={"white"}
           onClick={() =>
             navigate(`/location/tests/${data?.laboratory?.id || data?.id}`, {
-              state: data?.laboratory?.name || data?.name,
+              state: {
+                name: data?.laboratory?.name || data?.name,
+                lat: data?.laboratory?.latitude || data?.latitude,
+                lng: data?.laboratory?.longitude || data.longitude,
+              },
             })
           }
         >

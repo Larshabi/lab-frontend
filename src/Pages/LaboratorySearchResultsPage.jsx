@@ -20,11 +20,11 @@ const center = {
 };
 
 const LaboratorySearchResultsPage = () => {
-  const { isLoaded } = useJsApiLoader({
-    id: "google-map-script",
-    googleMapsApiKey: "YOUR_API_KEY",
-    // googleMapsApiKey: "YOUR_API_KEY",
-  });
+  //   const { isLoaded } = useJsApiLoader({
+  //     id: "google-map-script",
+  //     googleMapsApiKey: "YOUR_API_KEY",
+  //     // googleMapsApiKey: "YOUR_API_KEY",
+  //   });
 
   const [map, setMap] = React.useState(null);
 
@@ -61,7 +61,7 @@ const LaboratorySearchResultsPage = () => {
             <p>{data?.length} results</p>
           </div>
           <div className="body">
-            {/* <p>Make another search</p>
+            <p>Make another search</p>
             <Form onFinish={onFinish}>
               <Form.Item name={"searchTest"}>
                 <InputGroup>
@@ -71,8 +71,8 @@ const LaboratorySearchResultsPage = () => {
                   <Input type="tel" placeholder="Search test" />
                 </InputGroup>
               </Form.Item>
-            </Form> */}
-            {isLoaded && (
+            </Form>
+            {/* {isLoaded && (
               <GoogleMap
                 mapContainerStyle={containerStyle}
                 center={center}
@@ -81,9 +81,9 @@ const LaboratorySearchResultsPage = () => {
                 onUnmount={onUnmount}
               >
                 {/* Child components, such as markers, info windows, etc. */}
-                <></>
+            {/* <></>
               </GoogleMap>
-            )}
+            )} */}
           </div>
         </div>
         <div className="blood-results-right">

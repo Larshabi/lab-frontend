@@ -1,17 +1,16 @@
 import React from "react";
 import BackButton from "../Components/BackButton";
-import TestResultItem from "../Components/TestResultItem";
-import { Button, Empty, Form } from "antd";
-import { Input, InputGroup, InputLeftElement } from "@chakra-ui/react";
-import { FiSearch } from "react-icons/fi";
-import LocationResultsItem from "../Components/LocationResultsItem";
+import { Empty } from "antd";
+import { Button } from "@chakra-ui/react";
 import { useLocation, useParams } from "react-router-dom";
-import {
-  useGetLaboratoryTestsQuery,
-  useSearchQuery,
-} from "../app/services/labApi";
+import { useGetLaboratoryTestsQuery } from "../app/services/labApi";
 import TestItem from "../Components/TestItem";
-import { GoogleMap, Marker, useJsApiLoader } from "@react-google-maps/api";
+import {
+  GoogleMap,
+  MarkerF,
+  useJsApiLoader,
+  DirectionsRenderer,
+} from "@react-google-maps/api";
 
 const containerStyle = {
   width: "400px",
@@ -19,46 +18,27 @@ const containerStyle = {
 };
 
 const center = {
-  lat: -34.397,
-  lng: 150.644,
+  lat: 7.490997775233809,
+  lng: 4.541029218025413,
 };
 
 const LocationResults = () => {
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
-    googleMapsApiKey: "AIzaSyBScqAAul-87gJk0DcDP_OueeTrJEJWeLw",
-    // googleMapsApiKey: "YOUR_API_KEY",
+    // googleMapsApiKey: "AIzaSyBScqAAul-87gJk0DcDP_OueeTrJEJWeLw",
+    googleMapsApiKey: "YOUR_API_KEY",
   });
 
   const [map, setMap] = React.useState(null);
-
-  const onLoad = React.useCallback(function callback(map) {
-    // This is just an example of getting and using the map instance!!! don't just blindly copy!
-    const bounds = new window.google.maps.LatLngBounds(center);
-    console.log(bounds);
-    map.fitBounds(bounds);
-
-    setMap(map);
-  }, []);
 
   const onUnmount = React.useCallback(function callback(map) {
     setMap(null);
   }, []);
 
   const { id } = useParams();
-  const name = useLocation().state;
+  const { name, lat, lng } = useLocation().state;
   const { data, isLoading } = useGetLaboratoryTestsQuery(id);
-
-  //   let newArr;
-  //   if (data) {
-  //     newArr = data
-  //       .map((item) => {
-  //         return item.prices;
-  //       })
-  //       .flat()
-  //       .filter((item) => item?.laboratory?.city.toLowerCase() === "ife");
-  //     console.log(newArr);
-  //   }
+  console.log(lat, lng);
 
   const onFinish = (value) => {
     console.log(value);
@@ -91,15 +71,12 @@ const LocationResults = () => {
             {isLoaded && (
               <GoogleMap
                 mapContainerStyle={containerStyle}
-                center={center}
+                center={{ lat: lat, lng: lng }}
                 zoom={10}
-                onLoad={onLoad}
+                // onLoad={onLoad}
                 onUnmount={onUnmount}
               >
-                {/* Child components, such as markers, info windows, etc. */}
-                {/* {props.isMarkerShown && */}
-                <Marker position={{ lat: -34.397, lng: 150.644 }} />
-                {/* // }<></> */}
+                <MarkerF position={{ lat: lat, lng: lng }} />
               </GoogleMap>
             )}
             <Button
@@ -107,9 +84,7 @@ const LocationResults = () => {
               color={"white"}
               onClick={() =>
                 window.open(
-                  `https://www.google.com/maps/dir/?api=1&destination=${
-                    data?.laboratory?.latitude || data?.latitude
-                  },${data?.laboratory?.longitude || data.longitude}`
+                  `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`
                 )
               }
               className="mx-auto mt-3"
