@@ -2,6 +2,8 @@ import { Button } from "@chakra-ui/react";
 import React from "react";
 import { MdLocationPin } from "react-icons/md";
 import { BsFillTelephoneFill } from "react-icons/bs";
+import {BiDirections} from "react-icons/bi"
+import {GrOrganization} from "react-icons/gr"
 import png from "../assets/Rectangle 14 (1).png";
 
 const TestResultItem = ({ data }) => {
@@ -29,6 +31,18 @@ const TestResultItem = ({ data }) => {
               <BsFillTelephoneFill />
             </span>
             {data?.laboratory?.phone}
+          </p>
+          <p>
+            <span>
+              <BiDirections />
+            </span>
+            {data?.laboratory?.distance}km
+          </p>
+          <p>
+            <span>
+              <GrOrganization />
+            </span>
+            {data?.laboratory?.ownership}
           </p>
         </div>
       </div>

@@ -7,9 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const navigate = useNavigate();
-  console.log("object");
   const onfinish = (values) => {
-    console.log(values);
     if (values.category === "location" || values.category === "labName") {
       navigate("/location", { state: values });
     } else if (values.category === "testName") {
